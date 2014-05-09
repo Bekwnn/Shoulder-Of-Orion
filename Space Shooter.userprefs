@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behaviours\Player\MouseLookat.cs">
+    <Files>
+      <File FileName="Assets\Scripts\ProjectileOrbit.cs" Line="18" Column="49" />
+      <File FileName="Assets\Scripts\Behaviours\Player\FiringScript.cs" Line="34" Column="60" />
+      <File FileName="Assets\Scripts\Behaviours\Player\MouseLookat.cs" Line="12" Column="38" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
