@@ -8,11 +8,12 @@ public class ProjectileOrbit : MonoBehaviour {
 	public float lifetime;
 	public bool randomStartRotation;
 	float projectileSpeed;
+	float lifeTimer;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		if (lifetime != 0)
-			Destroy(gameObject, lifetime);
+			lifeTimer = lifetime;
 
 		projectileSpeed = Random.Range (
 			projectileSpeedAverage - projectileSpeedVariance,
@@ -27,5 +28,10 @@ public class ProjectileOrbit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.RotateAround(Vector3.zero, transform.right, Time.deltaTime*projectileSpeed);
+		lifeTimer -= Time.deltaTime;
+		if (lifeTimer <= 0 && lifetime != 0)
+		{
+			ObjectPool.instance.PoolObject(gameObject);
+		}
 	}
 }

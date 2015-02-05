@@ -10,10 +10,11 @@ public abstract class Weapon : MonoBehaviour {
 
 	public void Fire()
 	{
-		Instantiate(
-			projectile,
-			gameObject.transform.position,
-			gameObject.transform.rotation
-		);
+		GameObject shot = ObjectPool.instance.GetObjectForType(projectile.name, true);
+		if (shot)
+		{
+			shot.transform.position = transform.position;
+			shot.transform.rotation = transform.rotation;
+		}
 	}
 }

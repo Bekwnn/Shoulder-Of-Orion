@@ -21,10 +21,18 @@ public class Spawner : MonoBehaviour {
 		       && (totalSpawned < maxLifetimeSpawns || maxLifetimeSpawns == 0)
 		       && timer == 0f)
 		{
+			GameObject gobj = ObjectPool.instance.GetObjectForType(spawnedObject.name, true);
+			if (gobj == null) return;
+
 			timer += spawnCooldown;
-			GameObject gobj = (GameObject)Instantiate(spawnedObject);
+
+			Vector3 spawnPosition = Random.onUnitSphere * 16;
+			gobj.transform.position = spawnPosition;
+			gobj.transform.rotation = Quaternion.Euler(spawnPosition);
+
 			SpawnedObject spawnProperty = gobj.AddComponent<SpawnedObject>();
 			spawnProperty.spawner = this;
+
 			totalSpawned++;
 			currentSpawned++;
 		}

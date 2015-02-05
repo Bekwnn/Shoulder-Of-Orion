@@ -11,7 +11,7 @@ public class AsteroidHealth : MonoBehaviour {
 	int startingHealth;
 	int currentHealth;
 
-	void Start()
+	void OnEnable()
 	{
 		if (managerObj)
 			manager = managerObj.GetComponent<SpawnedObject>();
@@ -20,11 +20,12 @@ public class AsteroidHealth : MonoBehaviour {
 			maxHealthAverage-maxHealthVariance, maxHealthAverage+maxHealthVariance);
 		currentHealth = startingHealth;
 
-		transform.localScale = transform.localScale*(currentHealth/100f);
+		transform.localScale = Vector3.one*(startingHealth/100f);
 	}
 
 	void OnCollisionEnter(Collision other)
 	{
+		Debug.Log ("A shot!");
 		DealsDamage otherHarm = other.gameObject.GetComponent<DealsDamage>();
 		if (otherHarm)
 		{
@@ -38,7 +39,7 @@ public class AsteroidHealth : MonoBehaviour {
 	void OnDestroy()
 	{
 		if (manager) manager.ChildDestroyed();
-		else Destroy(gameObject);
+		else ObjectPool.instance.PoolObject(managerObj);
 	}
 
 	void OnHealthChange()
