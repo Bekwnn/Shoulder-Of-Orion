@@ -2,19 +2,30 @@
 using System.Collections;
 
 public class ProjectileOrbit : MonoBehaviour {
-
-	private Transform orbitTarget;
-	public float projectileSpeed;
+	
+	public float projectileSpeedAverage;
+	public float projectileSpeedVariance;
 	public float lifetime;
+	public bool randomStartRotation;
+	float projectileSpeed;
 
-	// Start
+	// Use this for initialization
 	void Start () {
-		orbitTarget = GameObject.Find("Planet").transform;
-		Destroy(gameObject, lifetime);
-	}
+		if (lifetime != 0)
+			Destroy(gameObject, lifetime);
 
+		projectileSpeed = Random.Range (
+			projectileSpeedAverage - projectileSpeedVariance,
+			projectileSpeedAverage + projectileSpeedVariance
+		);
+
+		//set random rotation along z rot axis
+		if (randomStartRotation)
+			transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 359));
+	}
+	
 	// Update is called once per frame
 	void Update () {
-		transform.RotateAround(orbitTarget.position, -transform.up, Time.deltaTime*projectileSpeed);
+		transform.RotateAround(Vector3.zero, transform.right, Time.deltaTime*projectileSpeed);
 	}
 }

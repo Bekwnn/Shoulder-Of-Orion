@@ -73,9 +73,9 @@
      <Compile Include="Assets\Scripts\Player\Weapons\Equipment.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\GoldMelter.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\IceCrusher.cs" />
-     <Compile Include="Assets\Scripts\Player\Weapons\ProjectileOrbit.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\RockBlaster.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\Weapon.cs" />
+     <Compile Include="Assets\Scripts\ProjectileOrbit.cs" />
      <Compile Include="Assets\Scripts\World\GameInstance.cs" />
      <Compile Include="Assets\Scripts\World\GameMode.cs" />
      <Compile Include="Assets\Scripts\World\GameModeSurvival.cs" />
