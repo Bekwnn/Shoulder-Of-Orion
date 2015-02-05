@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{28FCF307-BCEB-DF00-C466-08C29A16E02D}</ProjectGuid>
+	<ProjectGuid>{B8E5022B-7079-3224-D714-71A0F0393A7E}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -56,22 +56,33 @@
      <Compile Include="Assets\Oldgame\Done\Done_Scripts\Done_PlayerController.cs" />
      <Compile Include="Assets\Oldgame\Done\Done_Scripts\Done_RandomRotator.cs" />
      <Compile Include="Assets\Oldgame\Done\Done_Scripts\Done_WeaponController.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Asteroids\AsteroidBreak.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Asteroids\AsteroidSpawner.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Asteroids\GoldSpawn.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Asteroids\IceSpawn.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Asteroids\MoverAround.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Asteroids\RandomRotator.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Camera\CameraBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Player\FiringScript.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Player\MouseLookat.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Player\PlayerDeath.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Player\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\Behaviours\Player\ShipRotation.cs" />
-     <Compile Include="Assets\Scripts\DestroyOnContact.cs" />
-     <Compile Include="Assets\Scripts\ProjectileOrbit.cs" />
-     <Compile Include="Assets\Scripts\ScoreTracker.cs" />
-     <Compile Include="Assets\Scripts\ShotColor.cs" />
+     <Compile Include="Assets\Scripts\DealsDamage.cs" />
+     <Compile Include="Assets\Scripts\Environment\Asteroids\AsteroidHealth.cs" />
+     <Compile Include="Assets\Scripts\Environment\Asteroids\RandomRotator.cs" />
+     <Compile Include="Assets\Scripts\Environment\SpawnedObject.cs" />
+     <Compile Include="Assets\Scripts\Environment\Spawner.cs" />
+     <Compile Include="Assets\Scripts\Player\Camera\PlayerCamera.cs" />
+     <Compile Include="Assets\Scripts\Player\DefaultGameObject.cs" />
+     <Compile Include="Assets\Scripts\Player\Movement\MouseLookat.cs" />
+     <Compile Include="Assets\Scripts\Player\Movement\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\Movement\ShipRotation.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerHUD.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\Player\Possession.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\Equipment.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\GoldMelter.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\IceCrusher.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\ProjectileOrbit.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\RockBlaster.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\Weapon.cs" />
+     <Compile Include="Assets\Scripts\World\GameInstance.cs" />
+     <Compile Include="Assets\Scripts\World\GameMode.cs" />
+     <Compile Include="Assets\Scripts\World\GameModeSurvival.cs" />
+     <Compile Include="Assets\Scripts\World\GameState.cs" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
