@@ -1,12 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Environment\Spawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectPool.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\Weapons\Weapon.cs" Line="21" Column="1" />
+      <File FileName="Assets\Scripts\Health.cs" Line="5" Column="27" />
+      <File FileName="Assets\Scripts\ProjectileOrbit.cs" Line="50" Column="35" />
+      <File FileName="Assets\Scripts\Player\Weapons\Weapon.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\Weapons\Equipment.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Environment\Spawner.cs" Line="47" Column="1" />
-      <File FileName="Assets\Scripts\Environment\SpawnedObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Environment\Spawner.cs" Line="24" Column="85" />
+      <File FileName="Assets\Scripts\Environment\SpawnedObject.cs" Line="18" Column="25" />
       <File FileName="Assets\Scripts\World\GameMode.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TakesDamage.cs" Line="5" Column="29" />
+      <File FileName="Assets\Scripts\Player\PlayerHealth.cs" Line="12" Column="17" />
+      <File FileName="Assets\Scripts\Environment\Asteroids\AsteroidHealth.cs" Line="25" Column="18" />
+      <File FileName="Assets\Scripts\ObjectPool.cs" Line="133" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

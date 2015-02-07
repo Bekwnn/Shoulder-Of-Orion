@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AsteroidHealth : MonoBehaviour {
+public class AsteroidHealth : Health {
 	public GameObject managerObj;
 	SpawnedObject manager;
 
 	public int maxHealthAverage;
 	public int maxHealthVariance;
 	public EDamageType weakAgainst;
-	int startingHealth;
-	int currentHealth;
+	public int startingHealth;
 
 	void OnEnable()
 	{
@@ -23,43 +22,44 @@ public class AsteroidHealth : MonoBehaviour {
 		transform.localScale = Vector3.one*(startingHealth/100f);
 	}
 
-	void OnCollisionEnter(Collision other)
+	public override void TakeDamage(int damage, EDamageType damageType)
 	{
-		Debug.Log ("A shot!");
-		DealsDamage otherHarm = other.gameObject.GetComponent<DealsDamage>();
-		if (otherHarm)
-		{
-			int damageTaken = (int)((weakAgainst == otherHarm.damageType)?
-				otherHarm.damage * 1.5f : otherHarm.damage);
-			currentHealth -= damageTaken;
-			OnHealthChange();
-		}
+		int damageTaken = (int)((weakAgainst == damageType)?
+		                        damage * 1.5f : damage);
+		currentHealth -= damageTaken;
+		OnHealthChange();
 	}
 
 	void OnDestroy()
 	{
-		if (manager) manager.ChildDestroyed();
-		else ObjectPool.instance.PoolObject(managerObj);
+		//if (manager) manager.ChildDestroyed();
+		ObjectPool.instance.PoolObject(transform.root.gameObject);
 	}
 
 	void OnHealthChange()
 	{
-		if (currentHealth <= 1 && startingHealth < 120)
+		if (currentHealth <= 1)
 		{
 			OnDestroy();
 		}
-		if (currentHealth <= startingHealth/2 && currentHealth > 20)
+		if (currentHealth <= startingHealth/2 && startingHealth >= 160)
 		{
-			startingHealth = currentHealth;
+			startingHealth = startingHealth/2;
 
-			GameObject gObj = (GameObject)Instantiate(gameObject);
-			if (manager)
+			/*GameObject gObj = ObjectPool.instance.GetObjectForType(this.name, true);
+			AsteroidHealth childHealth;
+			if (gObj)
 			{
-				manager.ChildCreated();	//signal to parent there's another asteroid
-				gObj.transform.parent = transform.parent;
-			}
+				childHealth = gObj.GetComponent<AsteroidHealth>();
+				if (manager)
+				{
+					childHealth.manager = manager;
+					manager.ChildCreated();	//signal to parent there's another asteroid
+					gObj.transform.parent = transform.parent;
+				}
+			}*/
 
-			transform.localScale = transform.localScale*(startingHealth/100f);
+			transform.localScale = Vector3.one*(startingHealth/100f);
 			transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 359));
 		}
 	}

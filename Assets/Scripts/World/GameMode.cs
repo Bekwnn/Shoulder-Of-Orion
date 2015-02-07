@@ -17,10 +17,10 @@ public class GameMode : MonoBehaviour {
 
 	void Awake()
 	{
-		defaultPawn = GetComponent<DefaultGameObject>();
-		playerHUD = GetComponent<PlayerHUD>();
-		playerController = GetComponent<PlayerController>();
-		gameState = GetComponent<GameState>();
+		if (defaultPawn == null) 		defaultPawn = GetComponent<DefaultGameObject>();
+		if (playerHUD == null) 			playerHUD = GetComponent<PlayerHUD>();
+		if (playerController == null) 	playerController = GetComponent<PlayerController>();
+		if (gameState == null) 			gameState = GetComponent<GameState>();
 	}
 
 	void Start()

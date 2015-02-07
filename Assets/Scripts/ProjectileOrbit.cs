@@ -7,8 +7,11 @@ public class ProjectileOrbit : MonoBehaviour {
 	public float projectileSpeedVariance;
 	public float lifetime;
 	public bool randomStartRotation;
+	public bool destroyOnCollision;
+	public DealsDamage dealsDamage;
 	float projectileSpeed;
 	float lifeTimer;
+	Vector3 previousPosition;
 
 	// Use this for initialization
 	void OnEnable () {
@@ -23,6 +26,8 @@ public class ProjectileOrbit : MonoBehaviour {
 		//set random rotation along z rot axis
 		if (randomStartRotation)
 			transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 359));
+
+		previousPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +37,28 @@ public class ProjectileOrbit : MonoBehaviour {
 		if (lifeTimer <= 0 && lifetime != 0)
 		{
 			ObjectPool.instance.PoolObject(gameObject);
+		}
+		if (dealsDamage || destroyOnCollision)
+		{
+			RaycastHit hit;
+			if (Physics.Linecast(previousPosition, transform.position, out hit))
+			{
+				if (dealsDamage)
+				{
+					TakesDamage takesDamage = hit.collider.gameObject.GetComponent<TakesDamage>();
+					if (takesDamage)
+					{
+						takesDamage.healthScript.TakeDamage(
+							dealsDamage.damage, dealsDamage.damageType
+						);
+					}
+				}
+				if (destroyOnCollision)
+				{
+					ObjectPool.instance.PoolObject(gameObject);
+				}
+			}
+			previousPosition = transform.position;
 		}
 	}
 }
