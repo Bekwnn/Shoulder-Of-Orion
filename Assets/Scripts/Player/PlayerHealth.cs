@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerHealth : Health {
 	public int maxHealth = 1;
 	public bool bIsInvulnerable;
+	public GameObject invulnerableEffect;
 	float isInvulnerableTimer;
 
 	void OnEnable()
@@ -32,6 +33,7 @@ public class PlayerHealth : Health {
 	{
 		isInvulnerableTimer = duration;
 		bIsInvulnerable = true;
+		invulnerableEffect.SetActive(true);
 	}
 
 	void Update()
@@ -39,7 +41,11 @@ public class PlayerHealth : Health {
 		if (bIsInvulnerable)
 		{
 			isInvulnerableTimer -= Time.deltaTime;
-			if (isInvulnerableTimer <= 0) bIsInvulnerable = false;
+			if (isInvulnerableTimer <= 0)
+			{
+				bIsInvulnerable = false;
+				invulnerableEffect.SetActive(false);
+			}
 		}
 	}
 }

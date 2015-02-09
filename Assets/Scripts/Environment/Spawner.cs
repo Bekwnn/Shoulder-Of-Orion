@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour {
 	 */
 	public GameObject spawnedObject;
 	public int maxConcurrent;
+	public int minConcurrent;
 	public int maxLifetimeSpawns;
 	public float spawnCooldown;
 	int currentSpawned;
@@ -17,9 +18,18 @@ public class Spawner : MonoBehaviour {
 		timer -= Time.deltaTime;
 		if (timer < 0f) timer = 0f;
 
-		while ((currentSpawned < maxConcurrent || maxConcurrent == 0)
-		       && (totalSpawned < maxLifetimeSpawns || maxLifetimeSpawns == 0)
-		       && timer == 0f)
+		/* maxLifetime: number of lifetime spawns is absolute. (0 = inf)
+		 * minConcurrent: overrides maxConcurrent and the timer to make sure the minimum
+		 * number of spawns are in play
+		 * maxConcurrent: overrides the respawn timer to make sure no more than the max
+		 * number of spawns are in play at once (0 = inf)
+		 * timer: freezes at 'ready to spawn' until above conditions are met timer starts
+		 * immediately after a spawn
+		 */
+		while ((totalSpawned < maxLifetimeSpawns || maxLifetimeSpawns == 0)
+		       && (((currentSpawned < maxConcurrent || maxConcurrent == 0) && timer == 0f)
+		       		|| currentSpawned < minConcurrent)
+			   )
 		{
 			GameObject gobj = ObjectPool.instance.GetObjectForType(spawnedObject.name, true);
 			if (gobj == null) return;

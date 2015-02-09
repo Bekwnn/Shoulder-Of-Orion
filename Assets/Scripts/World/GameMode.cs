@@ -30,7 +30,9 @@ abstract public class GameMode : MonoBehaviour {
 
 	public void SpawnPlayer(Vector3 location, Quaternion rotation)
 	{
-		GameObject pawn = (GameObject)Instantiate(defaultPawn.defaultObject);
+
+		GameObject pawn = (defaultPawn.defaultObject)?
+			(GameObject)Instantiate(defaultPawn.defaultObject) : new GameObject("Empty Pawn");
 		pawn.transform.position = location;
 		pawn.transform.rotation = rotation;
 		playerController.Possess(pawn);
@@ -38,7 +40,8 @@ abstract public class GameMode : MonoBehaviour {
 
 	public void SpawnPlayer()
 	{
-		GameObject pawn = (GameObject)Instantiate(defaultPawn.defaultObject);
+		GameObject pawn = (defaultPawn.defaultObject)?
+			(GameObject)Instantiate(defaultPawn.defaultObject) : new GameObject("Empty Pawn");
 		playerController.Possess(pawn);
 	}
 

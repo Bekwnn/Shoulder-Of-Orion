@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class AsteroidHealth : Health {
-	SpawnedObject manager;
+	public SpawnedObject manager;
 
 	public int maxHealthAverage;
 	public int maxHealthVariance;
@@ -19,7 +19,6 @@ public class AsteroidHealth : Health {
 		}
 		
 		ResetScale ();
-		ResetManager ();
 	}
 
 	public override void TakeDamage(int damage, EDamageType damageType)
@@ -41,10 +40,12 @@ public class AsteroidHealth : Health {
 	{
 		if (currentHealth <= 1)
 		{
+			ResetManager ();
 			OnDestroy();
 		}
 		if (currentHealth <= startingHealth/2 && startingHealth >= 160)
 		{
+			ResetManager ();
 			startingHealth = startingHealth/2;
 
 			SpawnChild();
