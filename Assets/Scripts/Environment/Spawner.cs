@@ -30,8 +30,12 @@ public class Spawner : MonoBehaviour {
 			gobj.transform.position = spawnPosition;
 			gobj.transform.rotation = Quaternion.Euler(spawnPosition);
 
-			SpawnedObject spawnProperty = gobj.AddComponent<SpawnedObject>();
+			GameObject manager = new GameObject(gobj.name + "Manager");
+			gobj.transform.parent = manager.transform;
+
+			SpawnedObject spawnProperty = manager.AddComponent<SpawnedObject>();
 			spawnProperty.spawner = this;
+			spawnProperty.ChildCreated();
 
 			totalSpawned++;
 			currentSpawned++;

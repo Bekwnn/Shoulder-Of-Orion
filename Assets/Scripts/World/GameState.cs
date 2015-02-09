@@ -1,19 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum EGameState
-{
-	DEFAULT,
-	MENU,
-	PLAYING
-};
-
-public class GameState : MonoBehaviour {
+abstract public class GameState : MonoBehaviour {
 	/* manages the state of the game
 	 */
-	EGameState currentState;
+	public int currentState;
 
-	public void GoToState(EGameState newState)
+	public void GoToState(int newState)
 	{
 		currentState = newState;
 	}

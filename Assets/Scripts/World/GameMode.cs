@@ -6,7 +6,7 @@ using System.Collections;
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(GameState))]
 
-public class GameMode : MonoBehaviour {
+abstract public class GameMode : MonoBehaviour {
 	/* Dictates the rules of a game
 	 */
 
@@ -25,8 +25,22 @@ public class GameMode : MonoBehaviour {
 
 	void Start()
 	{
-		//spawn default pawn, location/rotation can be set in the prefab in assets
+		SpawnPlayer();
+	}
+
+	public void SpawnPlayer(Vector3 location, Quaternion rotation)
+	{
+		GameObject pawn = (GameObject)Instantiate(defaultPawn.defaultObject);
+		pawn.transform.position = location;
+		pawn.transform.rotation = rotation;
+		playerController.Possess(pawn);
+	}
+
+	public void SpawnPlayer()
+	{
 		GameObject pawn = (GameObject)Instantiate(defaultPawn.defaultObject);
 		playerController.Possess(pawn);
 	}
+
+	abstract public void RespawnPlayer(Vector3 location, Quaternion rotation);
 }

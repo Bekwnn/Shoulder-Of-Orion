@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DefaultGameObject : MonoBehaviour {
-	/* simple adapter to have a game object as a component
+	/* simple adapter to have a default prefab as a retrievable component
 	 */
 	public GameObject defaultObject;
 }

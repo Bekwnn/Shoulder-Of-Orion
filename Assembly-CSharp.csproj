@@ -82,8 +82,13 @@
      <Compile Include="Assets\Scripts\TakesDamage.cs" />
      <Compile Include="Assets\Scripts\World\GameInstance.cs" />
      <Compile Include="Assets\Scripts\World\GameMode.cs" />
-     <Compile Include="Assets\Scripts\World\GameModeSurvival.cs" />
      <Compile Include="Assets\Scripts\World\GameState.cs" />
+     <Compile Include="Assets\Scripts\World\MainMenu\GameModeMenu.cs" />
+     <Compile Include="Assets\Scripts\World\MainMenu\GameStateMenu.cs" />
+     <Compile Include="Assets\Scripts\World\Survival\GameModeSurvival.cs" />
+     <Compile Include="Assets\Scripts\World\Survival\GameStateSurvival.cs" />
+     <Compile Include="Assets\Scripts\World\TimeAttack\GameModeTimeAttack.cs" />
+     <Compile Include="Assets\Scripts\World\TimeAttack\GameStateTimeAttack.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

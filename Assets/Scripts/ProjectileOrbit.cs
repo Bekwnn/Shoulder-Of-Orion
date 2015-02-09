@@ -43,22 +43,27 @@ public class ProjectileOrbit : MonoBehaviour {
 			RaycastHit hit;
 			if (Physics.Linecast(previousPosition, transform.position, out hit))
 			{
-				if (dealsDamage)
-				{
-					TakesDamage takesDamage = hit.collider.gameObject.GetComponent<TakesDamage>();
-					if (takesDamage)
-					{
-						takesDamage.healthScript.TakeDamage(
-							dealsDamage.damage, dealsDamage.damageType
-						);
-					}
-				}
-				if (destroyOnCollision)
-				{
-					ObjectPool.instance.PoolObject(gameObject);
-				}
+				OnTriggerEnter(hit.collider);
 			}
 			previousPosition = transform.position;
+		}
+	}
+
+	public void OnTriggerEnter(Collider other)
+	{
+		/*if (dealsDamage)
+		{
+			TakesDamage takesDamage = other.gameObject.GetComponent<TakesDamage>();
+			if (takesDamage)
+			{
+				takesDamage.healthScript.TakeDamage(
+					dealsDamage.damage, dealsDamage.damageType
+					);
+			}
+		}*/
+		if (destroyOnCollision)
+		{
+			ObjectPool.instance.PoolObject(gameObject);
 		}
 	}
 }

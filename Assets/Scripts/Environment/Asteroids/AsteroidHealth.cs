@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class AsteroidHealth : Health {
-	public GameObject managerObj;
 	SpawnedObject manager;
 
 	public int maxHealthAverage;
@@ -12,14 +11,15 @@ public class AsteroidHealth : Health {
 
 	void OnEnable()
 	{
-		if (managerObj)
-			manager = managerObj.GetComponent<SpawnedObject>();
-
-		startingHealth = (int)Random.Range(
-			maxHealthAverage-maxHealthVariance, maxHealthAverage+maxHealthVariance);
-		currentHealth = startingHealth;
-
-		transform.localScale = Vector3.one*(startingHealth/100f);
+		if (startingHealth == 0)
+		{
+			startingHealth = (int)Random.Range(
+				maxHealthAverage-maxHealthVariance, maxHealthAverage+maxHealthVariance);
+			currentHealth = startingHealth;
+		}
+		
+		ResetScale ();
+		ResetManager ();
 	}
 
 	public override void TakeDamage(int damage, EDamageType damageType)
@@ -32,8 +32,9 @@ public class AsteroidHealth : Health {
 
 	void OnDestroy()
 	{
-		//if (manager) manager.ChildDestroyed();
-		ObjectPool.instance.PoolObject(transform.root.gameObject);
+		if (manager) manager.ChildDestroyed();
+		else Debug.Log("NO MANAGER!");
+		ObjectPool.instance.PoolObject(gameObject);
 	}
 
 	void OnHealthChange()
@@ -46,21 +47,42 @@ public class AsteroidHealth : Health {
 		{
 			startingHealth = startingHealth/2;
 
-			/*GameObject gObj = ObjectPool.instance.GetObjectForType(this.name, true);
-			AsteroidHealth childHealth;
-			if (gObj)
-			{
-				childHealth = gObj.GetComponent<AsteroidHealth>();
-				if (manager)
-				{
-					childHealth.manager = manager;
-					manager.ChildCreated();	//signal to parent there's another asteroid
-					gObj.transform.parent = transform.parent;
-				}
-			}*/
+			SpawnChild();
+			SpawnChild();
+			SpawnChild();
 
-			transform.localScale = Vector3.one*(startingHealth/100f);
-			transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 359));
+			OnDestroy();
 		}
+	}
+
+	void SpawnChild()
+	{
+		GameObject child = ObjectPool.instance.GetObjectForType(gameObject.name, false);
+		if (child)
+		{
+			child.transform.parent = transform.root;
+			child.transform.position = transform.position;
+
+			//signal to parent there's another asteroid
+			if (manager) manager.ChildCreated();
+
+			AsteroidHealth childHealth = child.GetComponent<AsteroidHealth>();
+			if (childHealth)
+			{
+				childHealth.startingHealth = startingHealth;
+				childHealth.ResetScale();
+				childHealth.ResetManager();
+			}
+		}
+	}
+
+	public void ResetScale()
+	{
+		transform.localScale = Vector3.one*(startingHealth/100f);
+	}
+
+	public void ResetManager()
+	{
+		manager = transform.root.gameObject.GetComponent<SpawnedObject>();
 	}
 }
