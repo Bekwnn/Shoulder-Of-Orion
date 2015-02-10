@@ -85,6 +85,7 @@
      <Compile Include="Assets\Scripts\World\GameState.cs" />
      <Compile Include="Assets\Scripts\World\MainMenu\GameModeMenu.cs" />
      <Compile Include="Assets\Scripts\World\MainMenu\GameStateMenu.cs" />
+     <Compile Include="Assets\Scripts\World\PauseGame.cs" />
      <Compile Include="Assets\Scripts\World\Survival\GameModeSurvival.cs" />
      <Compile Include="Assets\Scripts\World\Survival\GameStateSurvival.cs" />
      <Compile Include="Assets\Scripts\World\TimeAttack\GameModeTimeAttack.cs" />

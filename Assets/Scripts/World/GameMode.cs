@@ -46,4 +46,5 @@ abstract public class GameMode : MonoBehaviour {
 	}
 
 	abstract public void RespawnPlayer(Vector3 location, Quaternion rotation);
+	abstract public void AddScore(int scoreIncrease);
 }

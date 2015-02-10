@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(GameStateSurvival))]
+
 public class GameModeSurvival : GameMode {
 	public int playerLives = 3;
 	public int score;
@@ -22,6 +24,11 @@ public class GameModeSurvival : GameMode {
 			respawnTimer = timeToRespawn;
 			waitingToRespawn = true;
 		}
+	}
+
+	public override void AddScore(int scoreIncrease)
+	{
+		score += scoreIncrease;
 	}
 
 	void Update()

@@ -29,8 +29,9 @@ public class AsteroidHealth : Health {
 		OnHealthChange();
 	}
 
-	void OnDestroy()
+	void AsteroidDestroy()
 	{
+		ResetManager();
 		if (manager) manager.ChildDestroyed();
 		else Debug.Log("NO MANAGER!");
 		ObjectPool.instance.PoolObject(gameObject);
@@ -41,7 +42,7 @@ public class AsteroidHealth : Health {
 		if (currentHealth <= 1)
 		{
 			ResetManager ();
-			OnDestroy();
+			AsteroidDestroy();
 		}
 		if (currentHealth <= startingHealth/2 && startingHealth >= 160)
 		{
@@ -52,7 +53,7 @@ public class AsteroidHealth : Health {
 			SpawnChild();
 			SpawnChild();
 
-			OnDestroy();
+			AsteroidDestroy();
 		}
 	}
 
