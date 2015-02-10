@@ -9,9 +9,4 @@ public class GameModeMenu : GameMode {
 	{
 		//do nothing
 	}
-
-	public override void AddScore(int scoreIncrease)
-	{
-		//do nothing
-	}
 }

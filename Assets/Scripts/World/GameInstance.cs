@@ -12,6 +12,8 @@ public class GameInstance : MonoBehaviour {
 	 */
 	GameObject gameModeObject;
 	public GameMode aGameMode { get; private set; }
+	public int survivalHighScore;
+	public int timeAttackHighScore;
 
 	private static GameInstance _instance;
 	public static GameInstance instance
@@ -41,21 +43,24 @@ public class GameInstance : MonoBehaviour {
 			if(this != _instance)
 				Destroy(this.gameObject);
 		}
+	}
 
-		//make sure there's a game mode reference and gamemode object
+	void OnLevelWasLoaded(int levelIndex)
+	{
+		//reset the game mode reference from the new gamemode object
 		if (aGameMode == null || gameModeObject == null)
 		{
 			//look for game mode object in scene
 			if (gameModeObject == null)
 				gameModeObject = GameObject.Find("GameMode");
-
+			
 			//if there's no game mode object, make a default one
 			if (gameModeObject == null)
 			{
 				gameModeObject = new GameObject("GameMode");
 				aGameMode = gameModeObject.AddComponent<GameMode>();
 			}
-
+			
 			//if game mode object exists, get its game mode component or make one
 			else
 			{
@@ -65,5 +70,4 @@ public class GameInstance : MonoBehaviour {
 			}
 		}
 	}
-	
 }

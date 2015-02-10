@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	bool bBlockInput;
 	public GameObject possessedPawn { get; private set; }
 	public GameObject playerCamera;
+	public GameObject pauseObject;
 
 	public void Possess(GameObject pawn)
 	{
@@ -28,5 +29,15 @@ public class PlayerController : MonoBehaviour {
 	{
 		Destroy(possessedPawn);
 		possessedPawn = null;
+	}
+
+	public void Update()
+	{
+		//toggle pause
+		if (Input.GetButtonDown("Pause") && pauseObject)
+		{
+			if (pauseObject.activeInHierarchy) pauseObject.SetActive(false);
+			else pauseObject.SetActive(true);
+		}
 	}
 }

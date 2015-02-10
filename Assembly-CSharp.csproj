@@ -80,6 +80,12 @@
      <Compile Include="Assets\Scripts\Player\Weapons\Weapon.cs" />
      <Compile Include="Assets\Scripts\ProjectileOrbit.cs" />
      <Compile Include="Assets\Scripts\TakesDamage.cs" />
+     <Compile Include="Assets\Scripts\UI\EndGameScoreSurvival.cs" />
+     <Compile Include="Assets\Scripts\UI\EndGameScoreTimeAttack.cs" />
+     <Compile Include="Assets\Scripts\UI\ExitGame.cs" />
+     <Compile Include="Assets\Scripts\UI\HighScoreTextSurvival.cs" />
+     <Compile Include="Assets\Scripts\UI\HighScoreTextTimeAttack.cs" />
+     <Compile Include="Assets\Scripts\UI\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\World\GameInstance.cs" />
      <Compile Include="Assets\Scripts\World\GameMode.cs" />
      <Compile Include="Assets\Scripts\World\GameState.cs" />

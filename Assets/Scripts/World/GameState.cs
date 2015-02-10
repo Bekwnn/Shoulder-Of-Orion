@@ -6,7 +6,7 @@ abstract public class GameState : MonoBehaviour {
 	 */
 	public int currentState;
 
-	public void GoToState(int newState)
+	virtual public void GoToState(int newState)
 	{
 		currentState = newState;
 	}

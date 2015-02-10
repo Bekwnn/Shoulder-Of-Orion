@@ -46,6 +46,8 @@ public class AsteroidHealth : Health {
 		}
 		if (currentHealth <= startingHealth/2 && startingHealth >= 160)
 		{
+			GameInstance.instance.aGameMode.AddScore(startingHealth - startingHealth/2);
+
 			ResetManager ();
 			startingHealth = startingHealth/2;
 

@@ -5,7 +5,6 @@ using System.Collections;
 
 public class GameModeSurvival : GameMode {
 	public int playerLives = 3;
-	public int score;
 	public float timeToRespawn = 1;
 	bool waitingToRespawn;
 	float respawnTimer;
@@ -18,17 +17,17 @@ public class GameModeSurvival : GameMode {
 		{
 			//go to gameover game state
 			Debug.Log("GAME OVER");
+
+			if (score > GameInstance.instance.survivalHighScore)
+				GameInstance.instance.survivalHighScore = score;
+
+			GameInstance.instance.aGameMode.gameState.GoToState((int)EGameStateSurvival.GAMEOVER);
 		}
 		else
 		{
 			respawnTimer = timeToRespawn;
 			waitingToRespawn = true;
 		}
-	}
-
-	public override void AddScore(int scoreIncrease)
-	{
-		score += scoreIncrease;
 	}
 
 	void Update()

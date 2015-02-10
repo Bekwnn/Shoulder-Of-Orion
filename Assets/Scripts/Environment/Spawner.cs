@@ -9,9 +9,15 @@ public class Spawner : MonoBehaviour {
 	public int minConcurrent;
 	public int maxLifetimeSpawns;
 	public float spawnCooldown;
+	public bool spawnAtStart;
 	int currentSpawned;
 	int totalSpawned;
 	float timer;
+
+	void Awake()
+	{
+		if (!spawnAtStart) timer = spawnCooldown;
+	}
 
 	void Update()
 	{

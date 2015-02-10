@@ -5,7 +5,6 @@ using System.Collections;
 
 public class GameModeTimeAttack : GameMode {
 	public float timeLimit = 180f; //default 3 minutes
-	public int score;
 	public float timeToRespawn = 2;
 	float timeRemaining;
 	bool waitingToRespawn;
@@ -23,11 +22,6 @@ public class GameModeTimeAttack : GameMode {
 		waitingToRespawn = true;
 	}
 
-	public override void AddScore(int scoreIncrease)
-	{
-		score += scoreIncrease;
-	}
-
 	void Update()
 	{
 		timeRemaining -= Time.deltaTime;
@@ -36,6 +30,11 @@ public class GameModeTimeAttack : GameMode {
 			//change game state to game over
 			Debug.Log("GAME OVER");
 			GameInstance.instance.aGameMode.playerController.possessedPawn.SetActive(false);
+
+			if (score > GameInstance.instance.timeAttackHighScore)
+				GameInstance.instance.timeAttackHighScore = score;
+
+			GameInstance.instance.aGameMode.gameState.GoToState((int)EGameStateTimeAttack.GAMEOVER);
 		}
 
 		respawnTimer -= Time.deltaTime;

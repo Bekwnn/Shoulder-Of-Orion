@@ -15,6 +15,8 @@ abstract public class GameMode : MonoBehaviour {
 	public PlayerController playerController;
 	public GameState gameState;
 
+	public int score;
+
 	void Awake()
 	{
 		if (defaultPawn == null) 		defaultPawn = GetComponent<DefaultGameObject>();
@@ -45,6 +47,10 @@ abstract public class GameMode : MonoBehaviour {
 		playerController.Possess(pawn);
 	}
 
+	public void AddScore(int scoreIncrease)
+	{
+		score += scoreIncrease;
+	}
+
 	abstract public void RespawnPlayer(Vector3 location, Quaternion rotation);
-	abstract public void AddScore(int scoreIncrease);
 }

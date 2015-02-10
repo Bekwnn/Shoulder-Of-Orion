@@ -34,9 +34,9 @@ public class Equipment : MonoBehaviour {
 			cooldownTimer = currentWeapon.cooldown;
 		}
 
-		if (Input.GetKeyDown("1")) { EquipWeapon(EWeapon.ROCKBLASTER); }
-		if (Input.GetKeyDown("2")) { EquipWeapon(EWeapon.GOLDMELTER); }
-		if (Input.GetKeyDown("3")) { EquipWeapon(EWeapon.ICECRUSHER); }
+		if (Input.GetButtonDown("Weapon1")) { EquipWeapon(EWeapon.ROCKBLASTER); }
+		if (Input.GetButtonDown("Weapon2")) { EquipWeapon(EWeapon.GOLDMELTER); }
+		if (Input.GetButtonDown("Weapon3")) { EquipWeapon(EWeapon.ICECRUSHER); }
 	}
 	
 	// Update is called once per frame
